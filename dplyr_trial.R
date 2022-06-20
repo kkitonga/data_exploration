@@ -102,4 +102,27 @@ EuStockMarkets%>%
  geom_line(aes(y = SMI), color = "green") +  
  labs(x="time in years",title="Time series plot")
 
-#========================END===============================#
+#=====================PG 11 :BINDING ===============================#
+
+           #===========BIND COLUMNS===============#
+
+#setting working directory
+setwd("C:/Users/Karengi/Desktop/r work/rdata")
+
+#loading data to environment and assigning names----
+demography_1 <- read.csv("demography_1_50.csv")
+demography_2 <- read.csv("demography_51_100.csv")
+social_capital <- read.csv("social_capital_1_50.csv")
+
+#Binding columns----
+#Same households but additional variable information
+#bind on ID
+demography_merge <- bind_cols(demography_1,social_capital,id="HHID")
+
+
+#Bind rows----
+#different observations but same variables----
+ 
+demography_row_merge <- bind_rows(demography_1,demography_2)
+
+#===================================================================#
